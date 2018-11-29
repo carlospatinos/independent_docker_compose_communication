@@ -1,0 +1,14 @@
+version: "3"
+services:
+  web:
+    build: web/web-code
+    command: python app.py
+    ports:
+     - "5000:5000"
+    volumes:
+     - ./web/web-code:/code # modified here to take into account the new app path
+    links:
+     - redis
+    container_name: web
+  redis:
+    image: redis
